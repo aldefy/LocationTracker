@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TrackingApp</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="openDrawer">Open Drawer</string>
+    <string name="closeDrawer">Close Drawer</string>
+    <string name="dashboard_tag">Home</string>
+    <string name="settings_tag">Settings</string>
+    <string name="logout_tag">Logout</string>
+</resources>
