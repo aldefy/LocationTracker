@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.blueninjas.aditlal.trackingapp.R;
 import com.blueninjas.aditlal.trackingapp.fragment.HomeFragment;
+import com.blueninjas.aditlal.trackingapp.utils.Logger;
+import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("LocationTracker");
+
+
         fragment = new HomeFragment();
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frame, fragment);
