@@ -4,10 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/my_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+
+    <include layout="@layout/channel_rv_item" />
+    <!-- <android.support.v7.widget.RecyclerView
+         android:id="@+id/my_recycler_view"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent" />
+
+
+           app:layout_anchor="@id/my_recycler_view"
+         -->
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -16,7 +22,7 @@
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
         android:src="@drawable/ic_fab_event"
-        app:layout_anchor="@id/my_recycler_view"
+
         app:layout_anchorGravity="bottom|right|end"
         app:layout_behavior="com.blueninjas.aditlal.trackingapp.utils.ScrollAwareFABBehavior" />
 

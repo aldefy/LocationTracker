@@ -8,4 +8,10 @@
     <string name="dashboard_tag">Home</string>
     <string name="settings_tag">Settings</string>
     <string name="logout_tag">Logout</string>
+
+
+    <string name="facebook_id">101197600230923</string>
+    <string name="parse_key">SHoDsvoE3dmdisIrW9AoYvItW1MtX9xePnv1e8AO</string>
+    <string name="parse_secret">yKWIeNiIOQHcXTdkACkuKmOjqlbq7sXhgtIIFB2W</string>
+    <string name="forgotPwd">FORGOT PASSWORD</string>
 </resources>

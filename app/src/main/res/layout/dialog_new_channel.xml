@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til"
+        android:layout_marginTop="16dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/textInput"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:hint="Channel Name"
+            android:inputType="text" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
+        tools:background="@color/grey_300">
+        <!--Binay-->
+
+
+        <Button
+            android:id="@+id/cancel"
+            fontPath="fonts/Roboto-Medium.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toLeftOf="@+id/create"
+            android:background="@null"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="CANCEL"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:ignore="MissingPrefix" />
+
+        <Button
+            android:id="@+id/create"
+            fontPath="fonts/Roboto-Medium.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:background="@null"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="CREATE"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:ignore="MissingPrefix" />
+        <!--  <com.romainpiel.shimmer.ShimmerTextView
+              android:id="@+id/cancel"
+              fontPath="fonts/Roboto-Medium.ttf"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentBottom="true"
+
+              android:text="CANCEL    "
+              android:textColor="@color/red"
+              android:textSize="20sp" />
+      -->
+        <!-- <com.romainpiel.shimmer.ShimmerTextView
+             android:id="@+id/update"
+             fontPath="fonts/Roboto-Medium.ttf"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentBottom="true"
+             android:layout_alignParentRight="true"
+             android:text="UPDATE    "
+             android:textColor="@color/red"
+             android:textSize="20sp" />-->
+
+
+    </RelativeLayout>
+</LinearLayout>

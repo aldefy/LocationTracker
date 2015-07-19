@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Location Tracker" />
+
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <LinearLayout
+            android:id="@+id/phone_login_form"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--<AutoCompleteTextView-->
+            <!--android:id="@+id/phone"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:textColor="@color/default_text_color"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="@string/prompt_phone"-->
+            <!--android:inputType="phone"-->
+            <!--android:maxLines="1"-->
+            <!--android:singleLine="true" />-->
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/textMobileField"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Mobile Number"
+                    android:inputType="phone"
+                    android:maxEms="10" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <!--<com.cc.roer.widgets.materialEditText.MaterialEditText-->
+            <!--android:id="@+id/password"-->
+            <!--android:theme="@style/BaseDefaultTheme"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="@string/prompt_pin"-->
+            <!--android:imeActionId="@+id/login"-->
+            <!--android:imeOptions="actionUnspecified"-->
+            <!---->
+            <!--android:textColor="@color/default_text_color"-->
+            <!--android:maxLines="1"-->
+            <!--android:singleLine="true" />-->
+
+            <!--<Button-->
+            <!--android:id="@+id/sign_in_button"-->
+            <!--style="?android:textAppearanceSmall"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:text="@string/action_sign_in"-->
+            <!--android:background="@color/login_btn"-->
+            <!--android:theme="@style/ButtonBar"-->
+            <!--android:textStyle="bold" />-->
+            <Button
+                android:id="@+id/login_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="30dp"
+                android:text="Login" />
+
+            <TextView
+                android:id="@+id/forgot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/forgotPwd" />
+
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
