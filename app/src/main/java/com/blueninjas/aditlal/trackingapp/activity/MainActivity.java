@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.blueninjas.aditlal.trackingapp.R;
 import com.blueninjas.aditlal.trackingapp.fragment.HomeFragment;
+import com.blueninjas.aditlal.trackingapp.fragment.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.settings:
-                        fragment = new HomeFragment();
+                        fragment = new SettingsFragment();
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();
                         fragmentTransaction.replace(R.id.frame, fragment);
                         fragmentTransaction.commit();

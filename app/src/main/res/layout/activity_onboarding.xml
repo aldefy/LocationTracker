@@ -1,51 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/primary">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="Location Tracker" />
+        android:layout_centerVertical="true"
+        android:layout_gravity="center">
 
-    <ScrollView
-        android:id="@+id/login_form"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        <TextView
+            android:id="@+id/appName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="@string/app_name" />
+
+
+        <ImageView
+            android:id="@+id/app_icon"
+            android:layout_width="fill_parent"
+            android:layout_height="300dp"
+            android:layout_below="@+id/appName"
+            android:src="@drawable/app_icon" />
+
 
         <LinearLayout
             android:id="@+id/phone_login_form"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/app_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:orientation="vertical">
-
-            <!--<AutoCompleteTextView-->
-            <!--android:id="@+id/phone"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:textColor="@color/default_text_color"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:hint="@string/prompt_phone"-->
-            <!--android:inputType="phone"-->
-            <!--android:maxLines="1"-->
-            <!--android:singleLine="true" />-->
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/til"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center">
+                android:gravity="center"
+                android:hint="Mobile number">
 
                 <EditText
                     android:id="@+id/textMobileField"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:hint="Mobile Number"
+                    android:hint="Mobile number"
                     android:inputType="phone"
+                    android:imeOptions="actionDone"
                     android:maxEms="10" />
             </android.support.design.widget.TextInputLayout>
 
@@ -95,5 +102,7 @@
 
 
         </LinearLayout>
-    </ScrollView>
+    </RelativeLayout>
+
+
 </RelativeLayout>

@@ -1,16 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mapbox="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:mapbox="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="100">
 
     <com.mapbox.mapboxsdk.views.MapView
         android:id="@+id/mapview"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        mapbox:mapid="aditlal.moh3494g"
-        mapbox:accessToken="pk.eyJ1IjoiYWRpdGxhbCIsImEiOiI2NTQwOGNlYWQyMzdlOThhYzFmODE1MTFlNGI5OGM0OCJ9.rPbC0GTNQZqxQQy4IlkW6g"/>
+        android:layout_height="0dp"
+        android:layout_weight="90"
+        mapbox:accessToken="pk.eyJ1IjoiYWRpdGxhbCIsImEiOiI2NTQwOGNlYWQyMzdlOThhYzFmODE1MTFlNGI5OGM0OCJ9.rPbC0GTNQZqxQQy4IlkW6g"
+        mapbox:mapid="aditlal.moh3494g" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:gravity="center"
+        android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/sendLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 " />
+
+        <Button
+            android:id="@+id/sendLocation2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2" />
+        <Button
+            android:id="@+id/sendLocation3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3" />
+        <Button
+            android:id="@+id/sendLocation4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4" />
+
+    </LinearLayout>
 </LinearLayout>

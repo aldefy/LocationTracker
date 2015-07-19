@@ -1,5 +1,6 @@
 package com.blueninjas.aditlal.trackingapp.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,12 +9,14 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatDialog;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,6 +24,7 @@ import com.blueninjas.aditlal.trackingapp.MainApplication;
 import com.blueninjas.aditlal.trackingapp.PubNubManager;
 import com.blueninjas.aditlal.trackingapp.R;
 import com.blueninjas.aditlal.trackingapp.activity.ChannelDetailActivity;
+import com.blueninjas.aditlal.trackingapp.adapter.MyRecyclerAdapter;
 import com.blueninjas.aditlal.trackingapp.utils.CommonPreferences;
 import com.blueninjas.aditlal.trackingapp.utils.Logger;
 import com.parse.FindCallback;
@@ -32,6 +36,7 @@ import com.pubnub.api.Callback;
 import com.pubnub.api.Pubnub;
 import com.pubnub.api.PubnubError;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -51,12 +56,14 @@ public class HomeFragment extends Fragment {
     CommonPreferences commonPreferences;
 
     String channel = "fhdgjf";
-    @InjectView(R.id.cardUserName)
-    TextView cardUserName;
-    @InjectView(R.id.cardUserRole)
-    TextView cardUserRole;
-    @InjectView(R.id.cardHeaderLayout)
-    LinearLayout cardHeaderLayout;
+    @InjectView(R.id.my_recycler_view)
+    RecyclerView myRecyclerView;
+
+    @InjectView(R.id.fab)
+    FloatingActionButton fab;
+
+
+    AppCompatDialog fabDialog;
     @InjectView(R.id.cardImageView)
     ImageView cardImageView;
     @InjectView(R.id.cardRichContentTitle)
@@ -67,12 +74,11 @@ public class HomeFragment extends Fragment {
     TextView cardDescription;
     @InjectView(R.id.card_view)
     CardView cardView;
-    @InjectView(R.id.fab)
-    FloatingActionButton fab;
     @InjectView(R.id.main_content)
     CoordinatorLayout mainContent;
+    private List<ParseObject> channels;
 
-    AppCompatDialog fabDialog;
+    ProgressDialog d;
 
     @Nullable
     @Override
@@ -80,15 +86,26 @@ public class HomeFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.inject(this, v);
         application = MainApplication.getInstance();
+        channels = new ArrayList<>();
         commonPreferences = new CommonPreferences(getActivity());
-
+        d = new ProgressDialog(getActivity());
+        d.setMessage("Creating channel");
+        d.setCanceledOnTouchOutside(false);
         fabDialog = new AppCompatDialog(getActivity());
         fabDialog.setTitle("Create a channel");
         fabDialog.setContentView(R.layout.dialog_new_channel);
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ChannelDetailActivity.class).putExtra("channel", channel));
+            }
+        });
         ((Button) fabDialog.findViewById(R.id.create)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // channel = ((EditText) fabDialog.findViewById(R.id.textInput)).getText().toString();
+                d.show();
+                channel = ((EditText) fabDialog.findViewById(R.id.textInput)).getText().toString();
+                fabDialog.cancel();
                 pubnub.publish(channel, "Welcome", new Callback() {
                     @Override
                     public void successCallback(String channel, Object message) {
@@ -99,6 +116,7 @@ public class HomeFragment extends Fragment {
                         channelObject.put("ChannelName", channel);
                         channelObject.saveInBackground();
                         Logger.d("create Channel", channel + " " + message.toString());
+                        d.cancel();
                         startActivity(new Intent(getActivity(), ChannelDetailActivity.class).putExtra("channel", channel));
 
                     }
@@ -112,6 +130,7 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void errorCallback(String channel, PubnubError error) {
                         super.errorCallback(channel, error);
+                        d.cancel();
                         Logger.d("create Channel", channel + " " + error.getErrorString());
                     }
                 });
@@ -128,13 +147,11 @@ public class HomeFragment extends Fragment {
         // myRecyclerView.setHasFixedSize(true);
         //LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         //myRecyclerView.setLayoutManager(llm);
-        cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), ChannelDetailActivity.class).putExtra("channel", channel));
 
-            }
-        });
+        myRecyclerView.setHasFixedSize(false);
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        myRecyclerView.setLayoutManager(llm);
+        myRecyclerView.setAdapter(new MyRecyclerAdapter(channels, R.layout.channel_rv_item));
 
         pubnub = PubNubManager.startPubnub();
         application.setPubNub(pubnub);
@@ -143,7 +160,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Logger.d("create Channel", channel + " " + "gfhdj");
-
+                //  startActivity(new Intent(getActivity(), ChannelDetailActivity.class).putExtra("channel", channel));
                 fabDialog.show();
 
               /*  *//* Publish a simple message to the demo_tutorial channel *//*
